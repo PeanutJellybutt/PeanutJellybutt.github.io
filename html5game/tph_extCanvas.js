@@ -1,6 +1,7 @@
 
 (function(extern, undefined){
 
+		//
     var X = 0;
 		var Y = 0;
 
@@ -30,5 +31,13 @@
 		canvas.addEventListener('mousemove', function(e) {
 				getCursorPosition(canvas, e);
 		})
+		
+		//
+		var audioContext;
+		
+		extern['GetAudioContext'] = function() {
+			if !audioContext
+				audioContext = new AudioContext;
+		}
 
 })(window['extCanvas'] = window['extCanvas']||{});
