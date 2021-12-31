@@ -33,11 +33,11 @@
 		})
 		
 		//
-		var audioContext;
+		var audioContext = false;
 		
 		extern['GetAudioContext'] = function() {
-			if !audioContext
-				audioContext = new AudioContext;
-		}
+        if !audioContext
+					audioContext = new AudioContext;
+    }
 
-})(window['extCanvas'] = window['extCanvas']||{});
+})(window['extJs'] = window['extJs']||{});
