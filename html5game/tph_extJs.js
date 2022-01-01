@@ -3,7 +3,9 @@ var audioContext;
 function getAudioContext() {
 	if (!audioContext) {
 		audioContext = new AudioContext;
+		return 1;
 	}
+	return 0;
 }
 
 var X = 0;
@@ -34,4 +36,16 @@ function CanvasSetListener() {
 	canvasHere.addEventListener('mousemove', function(e) {
 			getCursorPosition(canvasHere, e);
 	});
+}
+
+function checkIfIPAD() {
+	console.log("IS_IPAD?");
+	if (navigator && navigator.userAgent && navigator.userAgent != null) 
+	{
+			var strUserAgent = navigator.userAgent.toLowerCase();
+			var arrMatches = strUserAgent.match(/(iphone|ipod|ipad)/);
+			if (arrMatches != null) 
+					 return true;
+	}
+	return false;
 }
