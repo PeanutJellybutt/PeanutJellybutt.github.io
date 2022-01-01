@@ -1,13 +1,4 @@
 
-var audioContext;
-function getAudioContext() {
-	if (!audioContext) {
-		audioContext = new AudioContext;
-		return 1;
-	}
-	return 0;
-}
-
 var X = 0;
 var Y = 0;
 function getMousePosX(w) {
@@ -31,21 +22,36 @@ function getCursorPosition(canvas, event) {
 }
 
 var canvasHere;
-function CanvasSetListener() {
+var audioContext;
+function canvasSetListener() {
+	if (!audioContext) {
+		audioContext = new AudioContext;
+	}
 	canvasHere = document.getElementById('canvas');
 	canvasHere.addEventListener('mousemove', function(e) {
 			getCursorPosition(canvasHere, e);
 	});
 }
 
-function checkIfIPAD() {
-	console.log("IS_IPAD?");
-	if (navigator && navigator.userAgent && navigator.userAgent != null) 
-	{
-			var strUserAgent = navigator.userAgent.toLowerCase();
-			var arrMatches = strUserAgent.match(/(iphone|ipod|ipad)/);
-			if (arrMatches != null) 
-					 return true;
-	}
-	return false;
+function browser_click_handler_init_js() {
+		console.log("INIT_HANDLER_JS");
+		canvasHere = document.getElementById('canvas');
+    canvasHere.addEventListener("click", function() {
+			//
+			if (!audioContext) {
+				audioContext = new AudioContext;
+			}
+			console.log('click ' + audioContext.state);
+			if (audioContext.state !== 'running') {
+				audioContext.resume();
+			}
+			console.log('= ' + audioContext.state);
+			//
+			gml_Script_gmcallback_browser_click_handler();
+		});
+    return 0;
+}
+
+function checkIfTouch() {
+	return (navigator.maxTouchPoints > 0);
 }
