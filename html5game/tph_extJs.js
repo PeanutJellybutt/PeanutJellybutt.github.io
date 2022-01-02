@@ -35,30 +35,30 @@ function canvasSetListener() {
 	
 	var myEvent = ('ontouchstart' in document.documentElement) ? 'touchend' : 'click';
 	canvasHere.addEventListener(myEvent, function() {
-		if(typeof g_WebAudioContext == "undefined" || g_WebAudioContext == null) {
-			var AudioContext = window.AudioContext || window.webkitAudioContext;
-			g_WebAudioContext = new AudioContext;
-			g_WebAudioContext.resume();
-			console.log("NEW AUDIO");
-		} else if (g_WebAudioContext.state !== 'running') {
-			g_WebAudioContext.resume();
-			console.log("RESUME AUDIO");
-		} else if (audioRecheck) { 
-			g_WebAudioContext.suspend();
-			g_WebAudioContext.resume();
-			audioRecheck = false;
-			console.log("RERUN AUDIO");
-		}
+			gml_Script_gmcallback_browser_click_handler();
+			audioContextCheck();
 	});
 }
 
-function browser_click_handler_init_js() {
-		console.log("INIT_HANDLER_JS");
-		canvasHere = document.getElementById('canvas');
-    canvasHere.addEventListener("click", function() {
-			gml_Script_gmcallback_browser_click_handler();
-		});
-    return 0;
+function audioContextCheck() {
+	if(typeof g_WebAudioContext == "undefined" || g_WebAudioContext == null) {
+		var AudioContext = window.AudioContext || window.webkitAudioContext;
+		g_WebAudioContext = new AudioContext;
+		g_WebAudioContext.resume();
+		console.log("NEW AUDIO");
+	} else if (g_WebAudioContext.state !== 'running') {
+		g_WebAudioContext.resume();
+		console.log("RESUME AUDIO");
+	} else if (audioRecheck) { 
+		g_WebAudioContext.suspend();
+		g_WebAudioContext.resume();
+		audioRecheck = false;
+		console.log("RERUN AUDIO");
+	}
+}
+
+function setAudioRecheck() {
+	audioRecheck = 1;
 }
 
 function checkIfTouch() {
