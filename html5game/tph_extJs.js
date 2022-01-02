@@ -40,14 +40,14 @@ function canvasSetListener() {
 			g_WebAudioContext = new AudioContext;
 			g_WebAudioContext.resume();
 			console.log("NEW AUDIO");
+		} else if (g_WebAudioContext.state !== 'running') {
+			g_WebAudioContext.resume();
+			console.log("RESUME AUDIO");
 		} else if (audioRecheck) { 
 			g_WebAudioContext.suspend();
 			g_WebAudioContext.resume();
 			audioRecheck = false;
 			console.log("RERUN AUDIO");
-		} else if (g_WebAudioContext.state !== 'running') {
-			g_WebAudioContext.resume();
-			console.log("RESUME AUDIO");
 		}
 	});
 }
