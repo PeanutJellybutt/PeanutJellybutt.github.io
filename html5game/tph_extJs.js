@@ -22,11 +22,11 @@ function getCursorPosition(canvas, event) {
 }
 
 var canvasHere;
-var audioContext;
+//var audioContext;
 function canvasSetListener() {
-	if (!audioContext) {
-		audioContext = new AudioContext;
-	}
+	//if (audioContext == null) {
+	//	createAudioContext();
+	//}
 	canvasHere = document.getElementById('canvas');
 	canvasHere.addEventListener('mousemove', function(e) {
 			getCursorPosition(canvasHere, e);
@@ -38,8 +38,9 @@ function browser_click_handler_init_js() {
 		canvasHere = document.getElementById('canvas');
     canvasHere.addEventListener("click", function() {
 			//
+			/*
 			if (!audioContext) {
-				audioContext = new AudioContext;
+				createAudioContext();
 			}
 			console.log('click ' + audioContext.state);
 			if (audioContext.state !== 'running') {
@@ -47,11 +48,31 @@ function browser_click_handler_init_js() {
 			}
 			console.log('= ' + audioContext.state);
 			//
+			*/
 			gml_Script_gmcallback_browser_click_handler();
 		});
     return 0;
 }
-
+/*
+var resumeButton = null;
+function createAudioContext() {
+	audioContext = new AudioContext;
+	audioContext.resume();
+	audioContext.onstatechange = function() {
+		console.log('change: ' + audioContext.state);
+		if ((audioContext.state !== 'running') && (resumeButton == null)){
+			resumeButton = document.createElement("button");
+			resumeButton.innerHTML = "Resume?";
+			resumeButton.type = "button";
+			resumeButton.onclick = function () {
+				audioContext.resume();
+				resumeButton.remove();
+			};
+			document.body.appendChild(resumeButton);
+		}
+	}
+}
+*/
 function checkIfTouch() {
 	return (navigator.maxTouchPoints > 0);
 }
