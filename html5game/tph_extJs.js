@@ -64,3 +64,7 @@ function setAudioRecheck() {
 function checkIfTouch() {
 	return (navigator.maxTouchPoints > 0);
 }
+
+function copyToClipboard(str) {
+	navigator.clipboard.writeText(str);
+}

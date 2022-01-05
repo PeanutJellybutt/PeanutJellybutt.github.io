@@ -67,6 +67,13 @@ function FB_status() {               // Called when a person is finished with th
 	});
 }
 
+function FB_share(url) {
+	FB.ui({
+		method: 'share',
+		href: url,
+	}, function(response){});
+}
+
 function testAPI() {                      // Testing Graph API after login.  See statusChangeCallback() for when this call is made.
 	console.log('Welcome!  Fetching your information.... ');
 	FBId.api('/me', function(response) {
