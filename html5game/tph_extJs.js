@@ -1,4 +1,16 @@
 
+function GetBaseURL() {
+	/*
+	if (process.env.NODE_ENV === 'dev') {
+		return 0;
+	} 
+	else if (process.env.NODE_ENV === 'prod') {
+		return 1;
+	}*/
+	return "https://garfield-cny-content-staging.make-api.fun/garfieldcnyapi";
+	//return process.env.baseUrl;
+}
+
 var X = 0;
 var Y = 0;
 function getMousePosX(w) {
