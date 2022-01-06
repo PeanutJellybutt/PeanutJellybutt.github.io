@@ -11,10 +11,6 @@ function GetBaseURL() {
 	//return process.env.baseUrl;
 }
 
-function ShareAPI(data) {
-	navigator.share(data);
-}
-
 var X = 0;
 var Y = 0;
 function getMousePosX(w) {
@@ -83,4 +79,28 @@ function checkIfTouch() {
 
 function copyToClipboard(str) {
 	navigator.clipboard.writeText(str);
+}
+
+function ShareAPI(header,txt,url) {
+	if (navigator.share) {
+		navigator.share({
+			title: header,
+			text: txt,
+			url: url,
+		})
+		.then(() => console.log("Successful share"))
+		.catch((error) => console.log("Error sharing", error));
+	} else {
+		console.error("Your Browser doesn't support Web Share API");
+	}
+}
+
+function ToggleFullscreen() {
+	if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen();
+  } else {
+    if (document.exitFullscreen) {
+      document.exitFullscreen();
+    }
+  }
 }
