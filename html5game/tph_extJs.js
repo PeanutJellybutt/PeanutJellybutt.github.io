@@ -11,6 +11,10 @@ function GetBaseURL() {
 	//return process.env.baseUrl;
 }
 
+function ShareAPI(data) {
+	navigator.share(data);
+}
+
 var X = 0;
 var Y = 0;
 function getMousePosX(w) {
