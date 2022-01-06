@@ -95,12 +95,22 @@ function ShareAPI(header,txt,url) {
 	}
 }
 
-function ToggleFullscreen() {
+function ToggleFullscreen()
+{
+	/*
+	var root = document.documentElement;
+	var req = (
+		root.requestFullscreen ||
+		root.webkitRequestFullscreen ||
+		root.mozRequestFullScreen ||
+		root.msRequestFullscreen
+	);
 	if (!document.fullscreenElement) {
-      document.documentElement.requestFullscreen();
+      root.req();
   } else {
     if (document.exitFullscreen) {
-      document.exitFullscreen();
+      root.exitFullscreen();
     }
   }
+	*/
 }
