@@ -97,7 +97,6 @@ function ShareAPI(header,txt,url) {
 
 function ToggleFullscreen()
 {
-	/*
 	var root = document.documentElement;
 	var req = (
 		root.requestFullscreen ||
@@ -112,5 +111,4 @@ function ToggleFullscreen()
       root.exitFullscreen();
     }
   }
-	*/
 }
