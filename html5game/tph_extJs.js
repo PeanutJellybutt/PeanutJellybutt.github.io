@@ -99,17 +99,41 @@ function ShareAPI(header,txt,url) {
 function ToggleFullscreen()
 {
 	var root = document.documentElement;
-	var req = (
-		root.requestFullscreen ||
-		root.webkitRequestFullscreen ||
-		root.mozRequestFullScreen ||
-		root.msRequestFullscreen
+	var curr = (
+		root.fullscreenElement ||
+		root.fullScreenElement ||
+    root.webkitFullscreenElement ||
+    root.webkitFullScreenElement ||
+    root.mozFullScreenElement ||
+    root.msFullscreenElement
 	);
-	if (!document.fullscreenElement) {
-      root.req();
+	if (!curr) {
+		console.log("NOT_FULLSCREEN");
+		var requestMethod = (
+			root.requestFullscreen ||
+			root.requestFullScreen ||
+			root.webkitRequestFullscreen ||
+			root.webkitRequestFullScreen ||
+			root.mozRequestFullScreen ||
+			root.msRequestFullscreen
+		);
+		if (root.requestMethod) {
+			console.log("SET_FULLSCREEN");
+			root.requestMethod("hide");
+		}
   } else {
-    if (document.exitFullscreen) {
-      root.exitFullscreen();
+		console.log("IS_FULLSCREEN");
+		var requestMethod = (
+			root.exitFullscreen ||
+			root.exitFullScreen ||
+			root.webkitExitFullscreen ||
+			root.webkitExitFullScreen ||
+			root.mozExitFullScreen ||
+			root.msExitFullscreen
+		);
+    if (root.requestMethod) {
+			console.log("EXIT_FULLSCREEN");
+      root.requestMethod();
     }
   }
 }
