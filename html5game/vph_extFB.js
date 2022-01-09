@@ -78,6 +78,6 @@ function testAPI() {                      // Testing Graph API after login.  See
 	console.log('Welcome!  Fetching your information.... ');
 	FBId.api('/me', function(response) {
 		console.log('Successful login for: ' + response.name);
-		console.log('Successful login for: Thanks for logging in, ' + response.name + '!');
+		console.log(response);
 	});
 }
