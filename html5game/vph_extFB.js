@@ -1,6 +1,7 @@
 
 var FBId = null;
 var loginState = -1;
+var accessToken = "";
 function FB_init() {
 	window.fbAsyncInit = function() {
 		FB.init({
@@ -31,13 +32,15 @@ function FB_loginState() {
 	return loginState;
 }
 
+function FB_token() {
+	return accessToken;
+}
+
 function FB_login() {
 	loginState = 0;
 	FBId.login(function(response) {
 		if (response.status === 'connected') {
-			console.log("LOGGED_IN");
-			testAPI();
-			loginState = 1;
+			FB_status();
 		} else {
 			console.log("UNLIKELY");
 			loginState = -1;
@@ -60,6 +63,7 @@ function FB_status() {               // Called when a person is finished with th
 		if (response.status === 'connected') {   // Logged into your webpage and Facebook.
 			console.log("IS_LOGGED_IN");
 			console.log(response);
+			accessToken = response.authResponse.accessToken;
 			loginState = 1;
 		} else {                                 // Not logged into your webpage or we are unable to tell.
 			console.log("IS_NOT_LOGGED_IN");
@@ -79,6 +83,5 @@ function testAPI() {                      // Testing Graph API after login.  See
 	console.log('Welcome!  Fetching your information.... ');
 	FBId.api('/me', function(response) {
 		console.log('Successful login for: ' + response.name);
-		FB_status();
 	});
 }
