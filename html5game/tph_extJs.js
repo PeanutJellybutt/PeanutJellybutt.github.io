@@ -1,17 +1,4 @@
 
-function GetENV() {
-	return 0;
-	//console.log(process.env.NODE_ENV);
-	/*
-	if (document.env.ENV === 'dev') {
-		return 0;
-	} 
-	else if (document.env.ENV === 'prod') {
-		return 1;
-	}*/
-	return 0;
-}
-
 var X = 0;
 var Y = 0;
 function getMousePosX(w) {
