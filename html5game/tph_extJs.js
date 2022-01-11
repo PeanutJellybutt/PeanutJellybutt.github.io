@@ -69,6 +69,12 @@ function copyToClipboard(str) {
 	navigator.clipboard.writeText(str);
 }
 
+function CanShareAPI() {
+	if (navigator.share)
+		return true;
+	return false;
+}
+
 function ShareAPI(header,txt,url) {
 	if (navigator.share) {
 		navigator.share({
@@ -87,12 +93,12 @@ function ToggleFullscreen()
 {
 	var root = document.documentElement;
 	var curr = (
-		root.fullscreenElement ||
-		root.fullScreenElement ||
-    root.webkitFullscreenElement ||
-    root.webkitFullScreenElement ||
-    root.mozFullScreenElement ||
-    root.msFullscreenElement
+		document.fullscreenElement ||
+		document.fullScreenElement ||
+    document.webkitFullscreenElement ||
+    document.webkitFullScreenElement ||
+    document.mozFullScreenElement ||
+    document.msFullscreenElement
 	);
 	if (!curr) {
 		console.log("NOT_FULLSCREEN");
@@ -104,10 +110,10 @@ function ToggleFullscreen()
 			root.mozRequestFullScreen ||
 			root.msRequestFullscreen
 		);
-		if (root.requestMethod) {
+		//if (root.requestMethod) {
 			console.log("SET_FULLSCREEN");
 			root.requestMethod("hide");
-		}
+		//}
   } else {
 		console.log("IS_FULLSCREEN");
 		var requestMethod = (

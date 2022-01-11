@@ -49,11 +49,13 @@ function FB_login() {
 }
 
 function FB_logout() {
-	loginState = 0;
-	FBId.logout(function(response) {
-		console.log("LOGGED_OUT");
-		loginState = -1;
-	});
+	if (accessToken != "") {
+		loginState = 0;
+		FBId.logout(function(response) {
+			console.log("LOGGED_OUT");
+			loginState = -1;
+		});
+	}
 }
 
 function FB_status() {               // Called when a person is finished with the Login Button.
