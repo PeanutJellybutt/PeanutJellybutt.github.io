@@ -1,4 +1,9 @@
 
+const env = "dev";
+function GetENV() {
+	return env;
+}
+
 var X = 0;
 var Y = 0;
 function getMousePosX(w) {
