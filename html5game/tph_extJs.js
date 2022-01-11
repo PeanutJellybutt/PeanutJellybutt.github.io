@@ -1,5 +1,5 @@
 
-const env = "dev";
+const env = "prod";
 function GetENV() {
 	return env;
 }
