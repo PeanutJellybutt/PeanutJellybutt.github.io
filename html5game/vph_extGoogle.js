@@ -43,9 +43,10 @@ function Google_token() {
 
 function Google_login() {
 	loginState = 0;
-	GoogleUserID = GoogleAuthID.signIn().then(
+	GoogleAuthID.signIn().then(
 		function() {
 			console.log("IS_LOGGED_IN");
+			GoogleUserID = GoogleAuthID.currentUser.get();
 			var authResponse = GoogleUserID.getAuthResponse();
 			console.log(authResponse);
 			accessToken = authResponse.access_token;
