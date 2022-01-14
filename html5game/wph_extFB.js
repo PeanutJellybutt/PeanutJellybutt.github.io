@@ -2,6 +2,7 @@
 var FBId = null;
 var loginState = -1;
 var accessToken = "";
+
 function FB_init() {
 	window.fbAsyncInit = function() {
 		FB.init({
@@ -54,6 +55,7 @@ function FB_logout() {
 		FBId.logout(function(response) {
 			console.log("LOGGED_OUT");
 			loginState = -1;
+			accessToken = "";
 		});
 	}
 }
