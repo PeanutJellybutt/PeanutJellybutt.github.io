@@ -12,8 +12,9 @@ function Google_init() {
 	script.onload = function() {
 		gapi.load('auth2', function() {
 			var auth = gapi.auth2.init({client_id: '42745182088-b6fsqdrfehukqrb32orpspl2r73i0g00.apps.googleusercontent.com'})
-			GoogleAuthID = auth.then(
+			auth.then(
 			function() {
+				GoogleAuthID = auth;
 				console.log("Google Sign-in auth has successfully initialized");
 			},
 			function() {
