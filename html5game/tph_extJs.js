@@ -1,7 +1,12 @@
 
-const env = "dev";
+const env = "dev";	//dev, prod
 function GetENV() {
 	return env;
+}
+
+const region = "jpn"; //jpn, asia
+function GetRegion() {
+	return region;
 }
 
 var X = 0;
